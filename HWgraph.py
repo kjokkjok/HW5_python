@@ -94,7 +94,7 @@ class Graph:
         
         
     def Graph_compressing(self):
-        self.for_compressing = [(vertex, edge) for vertex, edge in self.vertices.items()                                if (len(edge.in_edges) == 1 and len(edge.out_edges) == 1)]
+        self.for_compressing = [(vertex, edge) for vertex, edge in self.vertices.items() if (len(edge.in_edges) == 1 and len(edge.out_edges) == 1)]
 
         for vertex, edge in self.for_compressing:
             if vertex in self.vertices and len(self.vertices) > 2:
@@ -102,9 +102,9 @@ class Graph:
                 output_vertex = list(edge.out_edges.keys())[0]
                 new_edge = Edge(edge.in_edges[input_vertex][0].seq, edge.out_edges[output_vertex][0].seq[-1])
 
-                new_edge.n = self.vertices[output_vertex].in_edges[vertex][0].n                + self.vertices[input_vertex].out_edges[vertex][0].n - 1
+                new_edge.n = self.vertices[output_vertex].in_edges[vertex][0].n + self.vertices[input_vertex].out_edges[vertex][0].n - 1
 
-                new_edge.coverage = np.mean([self.vertices[input_vertex].out_edges[vertex][0].coverage,                                             self.vertices[output_vertex].in_edges[vertex][0].coverage])
+                new_edge.coverage = np.mean([self.vertices[input_vertex].out_edges[vertex][0].coverage, self.vertices[output_vertex].in_edges[vertex][0].coverage])
 
                 self.vertices[input_vertex].out_edges[output_vertex] = [new_edge]
                 self.vertices[output_vertex].in_edges[input_vertex] = [new_edge]                
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     
     dataset = 'Загрузки/hw_4_5_dataset.fasta'
 
-    k = 25
+    k = 12
     
     my_graph = Graph(k)
     direction = 'reverse'

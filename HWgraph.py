@@ -120,7 +120,7 @@ if __name__ == '__main__':
     
     dataset = 'Загрузки/hw_4_5_dataset.fasta'
 
-    k = 12
+    k = 16
     
     my_graph = Graph(k)
     direction = 'reverse'
